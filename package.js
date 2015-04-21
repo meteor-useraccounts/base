@@ -1,3 +1,5 @@
+'use strict';
+
 // Package metadata for Meteor.js web platform (https://www.meteor.com/)
 // This file is defined within the Meteor documentation at
 //
@@ -7,12 +9,11 @@
 
 var Both = ['client', 'server'];
 var Client = 'client';
-var Server = 'server';
 
 
 Package.describe({
-  name: 'useraccounts:init',
-  summary: 'UserAccounts initialization package.',
+  name: 'useraccounts:base',
+  summary: 'UserAccounts base package.',
   version: '2.0.0',
   git: 'https://github.com/meteor-useraccounts/init.git'
 });
@@ -26,16 +27,33 @@ Package.onUse(function(api) {
     'useraccounts:core@2.0.0'
   ], Both);
 
+  api.imply([
+    'useraccounts:core',
+  ], Both);
+
   // Requires all other packages loads before this asking for weak dependencies.
-  // api.use('useraccounts:password@2.0.0', Both, { weak: true });
-  // api.use('useraccounts:oauth@2.0.0',    Both, { weak: true });
+  api.use('useraccounts:semantic-ui-templates', Client, {
+    weak: true
+  });
+  api.use('useraccounts:password@2.0.0', Both, {
+    weak: true
+  });
+  api.use('useraccounts:oauth@2.0.0', Both, {
+    weak: true
+  });
 
   // Base Class instantiation
   api.addFiles([
+    'src/_globals.js',
     'src/main.js'
   ], Both);
 
-  api.export([
-    'UserAccounts',
-  ], Both);
+  api.use([
+    'templating'
+  ], Client);
+
+  api.addFiles([
+    'src/helpers.js'
+  ], Client);
+
 });
