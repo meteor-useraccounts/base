@@ -45,6 +45,7 @@ Package.onUse(function(api) {
   // Base Class instantiation
   api.addFiles([
     'src/_globals.js',
+    'src/logger.js',
     'src/main.js'
   ], Both);
 
