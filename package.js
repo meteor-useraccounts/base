@@ -32,9 +32,6 @@ Package.onUse(function(api) {
   ], Both);
 
   // Requires all other packages loads before this asking for weak dependencies.
-  api.use('useraccounts:semantic-ui-templates', Client, {
-    weak: true
-  });
   api.use('useraccounts:password@2.0.0', Both, {
     weak: true
   });
