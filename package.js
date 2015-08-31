@@ -32,12 +32,15 @@ Package.onUse(function(api) {
   ], Both);
 
   // Requires all other packages loads before this asking for weak dependencies.
-  api.use('useraccounts:password@2.0.0', Both, {
-    weak: true
-  });
-  api.use('useraccounts:oauth@2.0.0', Both, {
-    weak: true
-  });
+  api.use('useraccounts:flow-routing@2.0.0', Both, {weak: true});
+  api.use('useraccounts:iron-routing@2.0.0', Both, {weak: true});
+  api.use('useraccounts:links@2.0.0', Both, {weak: true});
+  api.use('useraccounts:meld@2.0.0', Both, {weak: true});
+  api.use('useraccounts:oauth@2.0.0', Both, {weak: true});
+  api.use('useraccounts:password@2.0.0', Both, {weak: true});
+  api.use('useraccounts:separator@2.0.0', Both, {weak: true});
+  api.use('useraccounts:status@2.0.0', Both, {weak: true});
+  api.use('useraccounts:title@2.0.0', Both, {weak: true});
 
   // Base Class instantiation
   api.addFiles([
